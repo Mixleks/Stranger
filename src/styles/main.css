@@ -1,0 +1,400 @@
+@font-face {
+  font-family: "StrangerThings";
+  src: url("/src/assets/fonts/benguiat.ttf");
+}
+
+.stranger {
+  padding: 40px;
+  text-align: center;
+}
+
+.strangerTitle {
+  font-family: "Benguiat", serif;
+  font-size: 100px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #ff0707;
+  text-shadow: 0 0 4px #ff0000, 0 0 8px #ff1a1a, 0 0 24px #ff1a1a,
+    0 0 48px rgba(255, 0, 0, 0.8);
+
+  animation: flicker 2.3s infinite;
+  white-space: pre-wrap;
+}
+
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 0.85;
+  }
+  50% {
+    opacity: 0.55;
+  }
+  54% {
+    opacity: 0.9;
+  }
+}
+
+/* ===== Seasons grid ===== */
+.seasons {
+  --gap: 22px;
+  --cols: 5;
+  display: grid;
+  grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+  gap: var(--gap);
+  width: min(1200px, 92vw);
+  margin: 0 auto;
+}
+
+@media (max-width: 1200px) {
+  .seasons {
+    --cols: 4;
+  }
+}
+@media (max-width: 980px) {
+  .seasons {
+    --cols: 3;
+  }
+}
+@media (max-width: 720px) {
+  .seasons {
+    --cols: 2;
+  }
+}
+@media (max-width: 480px) {
+  .seasons {
+    --cols: 1;
+  }
+}
+
+.season-card {
+  background: #0a0a0a;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(255, 0, 0, 0.08), 0 10px 30px rgba(0, 0, 0, 0.45);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.season-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 0 1px rgba(255, 35, 35, 0.25), 0 18px 40px rgba(0, 0, 0, 0.6);
+}
+
+.season-cover {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4/5;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.season-bg {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: cover;
+  filter: saturate(0.9) contrast(1.05) brightness(0.9);
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+.season-card:hover .season-bg {
+  transform: scale(1.03);
+  filter: brightness(1);
+}
+
+.season-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+      120% 80% at 50% 110%,
+      rgba(0, 0, 0, 0.85) 0%,
+      rgba(0, 0, 0, 0.35) 55%,
+      transparent 80%
+    ),
+    linear-gradient(to top, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0));
+  mix-blend-mode: multiply;
+}
+
+.season-title {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  color: #fff;
+  font-weight: 600;
+  font-size: 20px;
+  text-shadow: 0 0 8px #000;
+  z-index: 2;
+}
+
+/* ===== Episodes dropdown ===== */
+.episodes {
+  border-top: 1px solid rgba(255, 50, 50, 0.18);
+  background: linear-gradient(
+    180deg,
+    rgba(15, 15, 15, 0.95),
+    rgba(10, 10, 10, 0.98)
+  );
+  padding: 10px 10px 6px;
+  animation: drop 0.18s ease;
+}
+
+@keyframes drop {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.episode-row {
+  display: grid;
+  grid-template-columns: 28px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  color: #ddd;
+  padding: 8px 10px;
+  background: transparent;
+  border: 0;
+  border-radius: 8px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.episode-row:hover {
+  background: rgba(255, 30, 30, 0.08);
+  color: #fff;
+}
+
+.ep-index {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 6px;
+  background: rgba(255, 30, 30, 0.12);
+  color: #ff4a4a;
+  font-weight: 700;
+}
+
+.ep-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ep-duration {
+  color: #aaa;
+  font-size: 12px;
+}
+
+/* сетка сезонов */
+.seasons {
+  --gap: 22px;
+  --cols: 5;
+  display: grid;
+  grid-template-columns: repeat(var(--cols), 1fr);
+  gap: var(--gap);
+  width: min(1200px, 92vw);
+  margin: 0 auto;
+}
+@media (max-width: 1200px) {
+  .seasons {
+    --cols: 4;
+  }
+}
+@media (max-width: 980px) {
+  .seasons {
+    --cols: 3;
+  }
+}
+@media (max-width: 720px) {
+  .seasons {
+    --cols: 2;
+  }
+}
+@media (max-width: 480px) {
+  .seasons {
+    --cols: 1;
+  }
+}
+
+.season-card {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 16px;
+  text-decoration: none;
+}
+.season-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  filter: brightness(0.9) contrast(1.05);
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+.season-title {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+  padding: 8px 12px;
+  color: #ff3b3b;
+  text-shadow: 0 0 8px rgba(255, 0, 0, 0.5);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  text-align: center;
+}
+.season-card:hover .season-img {
+  transform: scale(1.03);
+  filter: brightness(1);
+}
+
+.season-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 35%;
+  background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0));
+  pointer-events: none;
+}
+
+/* сезон: список серий */
+.season-header {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.season-hero {
+  width: 180px;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+}
+.season-heading {
+  color: #fff;
+  margin: 0;
+  text-shadow: 0 0 8px rgba(255, 0, 0, 0.25);
+}
+
+.episode-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+.episode-row {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 12px;
+  padding: 10px;
+  border-radius: 12px;
+  background: rgba(255, 40, 40, 0.06);
+}
+.episode-row:hover {
+  background: rgba(255, 40, 40, 0.12);
+}
+.episode-thumb {
+  width: 160px;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.episode-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.episode-title {
+  color: #fff;
+  font-weight: 700;
+}
+.ep-index {
+  display: inline-grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  background: rgba(255, 40, 40, 0.18);
+  color: #ff5757;
+  margin-right: 8px;
+}
+.ep-duration {
+  color: #bbb;
+  font-size: 12px;
+  margin-left: 6px;
+}
+.ep-desc {
+  color: #ccc;
+  margin: 0;
+}
+
+.btn-watch {
+  align-self: flex-start;
+  background: #ff2b2b;
+  color: #fff;
+  border: 0;
+  border-radius: 8px;
+  padding: 8px 12px;
+  text-decoration: none;
+}
+.btn-back {
+  background: transparent;
+  color: #ff4a4a;
+  border: 1px solid rgba(255, 60, 60, 0.4);
+  border-radius: 8px;
+  padding: 6px 10px;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+/* страница просмотра */
+.watch-title {
+  color: #fff;
+  text-shadow: 0 0 8px rgba(255, 0, 0, 0.25);
+  margin: 0 0 12px 0;
+}
+.player-wrap {
+  background: #000;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+}
+.watch-desc {
+  color: #ddd;
+  margin-top: 12px;
+}
+
+.watch-episodes-mini {
+  display: flex;
+  gap: 6px;
+  margin-top: 12px;
+}
+.mini-ep {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+  color: #ddd;
+  background: rgba(255, 40, 40, 0.08);
+}
+.mini-ep.active,
+.mini-ep:hover {
+  background: rgba(255, 40, 40, 0.2);
+  color: #fff;
+}

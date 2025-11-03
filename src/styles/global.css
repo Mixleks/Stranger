@@ -1,0 +1,126 @@
+
+html, body {
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  background: black;
+  color: red;
+  font-family: 'StrangerThings';
+  text-shadow: 0 0 10px red;
+}
+
+a {
+  color: #ff0000;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.noise-overlay {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  background: url("https://64.media.tumblr.com/6c1420bae4cf047833b1626c4aa68349/tumblr_ofxojeul5m1qzl9pho1_500.gif");
+  opacity: .09;
+  mix-blend-mode: screen;
+  z-index: 2000;
+}
+
+.crt-lines {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,0,0,0.03) 0px,
+    rgba(255,0,0,0.03) 2px,
+    rgba(0,0,0,0) 4px
+  );
+  mix-blend-mode: overlay;
+  opacity: .25;
+  z-index: 1500;
+}
+
+.fog {
+  pointer-events: none;
+  position: fixed;
+  width: 140vw;
+  height: 140vh;
+  top: -20vh;
+  left: -20vw;
+  background: url("https://i.pinimg.com/originals/f1/90/40/f19040317a77cac845d2943e84b93d9b.png") center/cover repeat;
+  filter: blur(12px) brightness(1.5);
+  opacity: .1;
+  animation: fogMove 20s linear infinite;
+  z-index: 800;
+}
+
+@keyframes fogMove {
+  from { transform: translateX(0) scale(1.1); }
+  to { transform: translateX(-12vw) scale(1.1); }
+}
+
+.particles {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  background-image: url("./image/image.png");
+  background-size: contain;
+  opacity: .15;
+  animation: spores 12s infinite linear;
+  z-index: 900;
+}
+
+@keyframes spores {
+  from { transform: translateY(0) }
+  to { transform: translateY(-10vh) }
+}
+
+.glitch {
+  position: relative;
+  display: inline-block;
+  color: #ff2222;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: .8;
+}
+
+.glitch::before {
+  color: #f00;
+  transform: translate(-2px, 0);
+  clip-path: inset(0 0 50% 0);
+  animation: glitchTop .6s infinite;
+}
+
+.glitch::after {
+  color: #ff4444;
+  transform: translate(2px, 0);
+  clip-path: inset(50% 0 0 0);
+  animation: glitchBot .6s infinite;
+}
+
+@keyframes glitchTop {
+  0% { transform: translate(-2px, -1px); }
+  50% { transform: translate(-3px, 0); }
+  100% { transform: translate(-1px, 1px); }
+}
+
+@keyframes glitchBot {
+  0% { transform: translate(2px, 1px); }
+  50% { transform: translate(3px, -1px); }
+  100% { transform: translate(1px, 0); }
+}
+
+
+
+

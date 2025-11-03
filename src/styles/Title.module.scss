@@ -1,0 +1,28 @@
+@keyframes stranger-fade-in {
+  0% {
+    opacity: 0;
+    filter: blur(8px);
+    letter-spacing: 20px;
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    letter-spacing: 4px;
+  }
+}
+
+@keyframes stranger-flicker {
+  0% { opacity: 1; }
+  5% { opacity: 0.4; }
+  10% { opacity: 1; }
+  15% { opacity: 0.8; }
+  20% { opacity: 1; }
+  30% { opacity: 0.5; }
+  40% { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+.strangerTitle {
+ color: red !important;
+  font-size: 48px;
+}
